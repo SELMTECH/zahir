@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    .bodys {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1em;
+        line-height: 1.25;
+        letter-spacing: 1px;
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 1em;
+        background-color: #ffffff;
+
+        /* Ensure no margin around the body */
+    }
+
+    .bodys * {
+        box-sizing: border-box;
+        transition: .25s all ease;
+    }
+
+    .containe {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+
+        margin: 0 auto;
+
+    }
+
+
+
+    .login-containe {
+        position: relative;
+        z-index: 0;
+        padding: 5rem 4rem;
+        width: 100%;
+        max-width: 525px;
+        min-height: 680px;
+
+        text-align: center;
+        background-color: black;
+
+
+    }
+
+    .login-containe:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        background-color: #000000ab;
+        box-shadow: 0 -20px 150px -20px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-login {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 4.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .login-nav {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0 0 6em 1rem;
+    }
+
+    .login-nav__item {
+        list-style: none;
+        display: inline-block;
+        margin-right: 2.25rem;
+    }
+
+    .login-nav__item:last-child {
+        margin-right: 0;
+    }
+
+    .login-nav__item a {
+        position: relative;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.25rem;
+        padding-bottom: .5rem;
+        transition: .20s all ease;
+    }
+
+    .login-nav__item.active a,
+    .login-nav__item a:hover {
+        color: #ffffff;
+        transition: .15s all ease;
+    }
+
+    .login-nav__item a:after {
+        content: '';
+        display: inline-block;
+        height: 10px;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        right: 100%;
+        bottom: -1px;
+        left: 0;
+        border-radius: 50%;
+        transition: .15s all ease;
+    }
+
+    .login-nav__item a:hover:after,
+    .login-nav__item.active a:after {
+        background: linear-gradient(to right, #A020F0, #FEDD91);
+        height: 2px;
+        right: 0;
+        bottom: 2px;
+        border-radius: 0;
+        transition: .20s all ease;
+    }
+
+    .login__label {
+        display: block;
+        padding-left: 1rem;
+    }
+
+    .login__label,
+    .login__label--checkbox {
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        font-size: .75rem;
+        margin-bottom: 1rem;
+    }
+
+    .login__label--checkbox {
+        display: inline-block;
+        position: relative;
+        padding-left: 1.5rem;
+        margin-top: 2rem;
+        margin-left: 1rem;
+        color: #ffffff;
+        font-size: .75rem;
+        text-transform: inherit;
+    }
+
+    .login__input {
+        color: white;
+        font-size: 1.15rem;
+        width: 100%;
+        padding: .5rem 1rem;
+        border: 2px solid transparent;
+        outline: none;
+        border-radius: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.25);
+        letter-spacing: 1px;
+
+        /* Ensure some spacing around input boxes */
+    }
+
+    .login__input:hover,
+    .login__input:focus {
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background-color: transparent;
+    }
+
+    .login__input+.login__label {
+        margin-top: 1.5rem;
+    }
+
+    .login__input--checkbox {
+        position: absolute;
+        top: .1rem;
+        left: 0;
+        margin: 0;
+    }
+
+    .login__submit {
+        color: #ffffff;
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 1rem;
+        padding: .75rem;
+        border-radius: 2rem;
+        display: block;
+        width: 100%;
+        background: linear-gradient(to right, #A020F0, #FEDD91);
+        background-color: rgba(17, 97, 237, .75);
+        border: none;
+        cursor: pointer;
+    }
+
+    .login__submit:hover {
+        background-color: #A020F0;
+    }
+
+    .login__forgot {
+        display: block;
+        margin-top: 3rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: .75rem;
+        text-decoration: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    .login__forgot:hover {
+        color: #A020F0;
+    }
+
+    .containe {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-containe,
+    .image-containe {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        overflow: hidden;
+        /* Ensure that content does not overflow outside the border radius */
+    }
+
+    .image-containe {
+        position: relative;
+        min-height: 680px;
+        background-image: url('images/pic.jpg');
+        background-size: cover;
+        background-position: center;
+        max-width: 40%;
+    }
+
+    @media (max-width: 768px) {
+        .image-containe {
+            display: none;
+        }
+
+        .login-containe {
+            max-width: 100%;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .login__input {
+            width: calc(100% - 2em);
+            /* Full width with margin for mobile */
+            margin: 1.5em auto;
+            /* Center input boxes on mobile */
+        }
+
+        .login__submit {
+            width: calc(100% - 2em);
+            /* Full width with margin for mobile */
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="icons">
+                    <i class="fa-solid fa-bars" id="bar-open"></i>
+                </div>
+                <div class="main-logo">
+                    ZAHIR BY ALOG
+                </div>
+                <ul class="menu-items">
+                    <div class="logo"
+                        style="font-size: 1.1em; font-style: italic; margin-right: 4em; margin-top: 0.3em;">ZAHIR BY
+                        ALOG
+                    </div>
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="book-appointment.html">Book Appointment</a></li>
+                    <li><a href="our-works.html">Our Works</a></li>
+                    <li><a href="#" id="open-appointment-popup"><i class="fa-solid fa-calendar-check"></i></a></li>
+
+                    <li><a href="sign-up.html"><i class="fas fa-user-plus" style="font-size: 1em;"></i></a></li>
+                    <li>
+                        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+
+                </ul>
+                <ul class="menu-responsive-items">
+
+                    <div class="icons">
+                        <i class="fa-solid fa-xmark" id="x-closed"></i>
+                    </div>
+
+
+                    <li><a href="index.html"><i class="fa-solid fa-home"></i> Home</a></li>
+                    <li><a href="about-us.html"><i class="fa-solid fa-user"></i> About Us</a></li>
+                    <li><a href="book-appointment.html"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a>
+                    </li>
+                    <li><a href="our-works.html"><i class="fa-solid fa-briefcase"></i> Our Works</a></li>
+                    <li><a href="sign-up.html"><i class="fa-solid fa-user-plus"></i> Sign In</a></li>
+
+                    <div class="socially-icons">
+                        <a href="https://facebook.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="socially-icon"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="bodys">
+        <div class="containe">
+            <div class="login-containe">
+                <form action="" class="form-login">
+                    <ul class="login-nav">
+                        <li class="login-nav__item active" id="signInTab">
+                            <a href="#">Sign In</a>
+                        </li>
+                        <li class="login-nav__item" id="signUpTab">
+                            <a href="#">Sign Up</a>
+                        </li>
+                    </ul>
+                    <div id="signInForm">
+                        <label for="login-input-user" class="login__label" style="color: #ffffff;">Username</label>
+                        <input id="login-input-user" class="login__input" type="text" />
+                        <label for="login-input-password" class="login__label" style="color: #ffffff;">Password</label>
+                        <input id="login-input-password" class="login__input" type="password" />
+                        <label for="login-sign-up" class="login__label--checkbox">
+                            <input id="login-sign-up" type="checkbox" class="login__input--checkbox" />
+                            Keep me Signed in
+                        </label>
+
+                        <a href="client.html" class="login__submit">Sign in</a>
+
+                    </div>
+                    <div id="signUpForm" style="display: none;">
+                        <label for="register-input-user" class="login__label"
+                            style="color: rgb(255, 255, 255);">Username</label>
+                        <input id="register-input-user" class="login__input signup-input" type="text" />
+                        <label for="register-input-password" class="login__label"
+                            style="color: rgb(255, 255, 255);">Password</label>
+                        <input id="register-input-password" class="login__input signup-input" type="password" />
+                        <label for="register-input-email" class="login__label"
+                            style="color: rgb(255, 255, 255);">Email</label>
+                        <input id="register-input-email" class="login__input signup-input" type="email" />
+                        <button class="login__submit">Sign up</button></a>
+                    </div>
+                </form>
+                <!-- Remove the forgot password link from here -->
+            </div>
+            <div class="image-containe">
+                <!-- Overlay text removed -->
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer-section">
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ZAHIR BY ALOG</p>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" style="--bg-color: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #00acee;"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-icon" style="--bg-color: #0e76a8;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#signUpTab').on('click', function () {
+                $('#signInForm').hide();
+                $('#signUpForm').show();
+                $('#signInTab').removeClass('active');
+                $('#signUpTab').addClass('active');
+            });
+
+            $('#signInTab').on('click', function () {
+                $('#signUpForm').hide();
+                $('#signInForm').show();
+                $('#signUpTab').removeClass('active');
+                $('#signInTab').addClass('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
